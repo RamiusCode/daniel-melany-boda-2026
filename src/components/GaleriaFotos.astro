@@ -1,0 +1,648 @@
+---
+// GaleriaFotos.astro
+---
+
+<section class="relative w-full py-4 px-6 overflow-hidden">
+    <!-- Partículas flotantes de fondo -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div
+            class="particula-dorada"
+            style="left: 10%; top: 20%; animation-delay: 0s;"
+        >
+        </div>
+        <div
+            class="particula-dorada"
+            style="left: 85%; top: 30%; animation-delay: 1.5s;"
+        >
+        </div>
+        <div
+            class="particula-dorada"
+            style="left: 15%; top: 70%; animation-delay: 3s;"
+        >
+        </div>
+        <div
+            class="particula-dorada"
+            style="left: 90%; top: 65%; animation-delay: 2s;"
+        >
+        </div>
+    </div>
+
+    <div
+        class="max-w-sm lg:max-w-3xl mx-auto relative z-10"
+        id="contenedor-galeria"
+    >
+        <!-- MARCO PRINCIPAL CON EFECTO GLASSMORPHISM -->
+        <div
+            class="backdrop-blur-sm rounded-3xl border-2 border-[#0a285e]/25 p-6 shadow-sm relative overflow-hidden"
+        >
+            <!-- Brillo sutil animado en la esquina -->
+            <div
+                class="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-[#0a285e]/10 to-transparent rounded-full blur-3xl animate-pulse-slow"
+            >
+            </div>
+            <div
+                class="absolute -bottom-20 -left-20 w-40 h-40 bg-gradient-to-tr from-[#0a285e]/8 to-transparent rounded-full blur-3xl animate-pulse-slow"
+                style="animation-delay: 1s;"
+            >
+            </div>
+
+            <!-- TÍTULO Y DESCRIPCIÓN -->
+            <div class="text-center mb-8 relative" id="tarjeta-galeria">
+                <!-- Icono cámara con animación -->
+                <div class="flex justify-center mb-4">
+                    <div class="w-12 h-12 relative camera-icon-container">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-[#9C7A2E]/20 to-[#9C7A2E]/5 rounded-full blur-xl animate-pulse-slow"
+                        >
+                        </div>
+                        <svg
+                            class="w-full h-full relative z-10 transform transition-transform duration-300 hover:scale-110"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M23 19C23 19.5304 22.7893 20.0391 22.4142 20.4142C22.0391 20.7893 21.5304 21 21 21H3C2.46957 21 1.96086 20.7893 1.58579 20.4142C1.21071 20.0391 1 19.5304 1 19V8C1 7.46957 1.21071 6.96086 1.58579 6.58579C1.96086 6.21071 2.46957 6 3 6H7L9 3H15L17 6H21C21.5304 6 22.0391 6.21071 22.4142 6.58579C22.7893 6.96086 23 7.46957 23 8V19Z"
+                                stroke="#9C7A2E"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                            <path
+                                d="M12 17C14.2091 17 16 15.2091 16 13C16 10.7909 14.2091 9 12 9C9.79086 9 8 10.7909 8 13C8 15.2091 9.79086 17 12 17Z"
+                                stroke="#9C7A2E"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Título -->
+                <h3
+                    class="text-[#9C7A2E] tracking-[0.3em] uppercase text-lg md:text-2xl mb-4 relative inline-block"
+                >
+                    Galería de Momentos
+                </h3>
+
+                <!-- Línea decorativa -->
+                <div class="flex items-center justify-center gap-2 mb-4">
+                    <div
+                        class="w-10 h-px bg-gradient-to-r from-transparent to-[#9C7A2E]/30"
+                    >
+                    </div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-[#9C7A2E]/40"></div>
+                    <div
+                        class="w-10 h-px bg-gradient-to-l from-transparent to-[#9C7A2E]/30"
+                    >
+                    </div>
+                </div>
+
+                <!-- Texto elegante -->
+                <p
+                    class="font-charm text-[#0a285e] text-lg md:text-2xl lg:text-3xl leading-relaxed mb-2"
+                >
+                    Captura y comparte los momentos especiales de esta
+                    celebración
+                </p>
+            </div>
+
+            <!-- TARJETA DEL QR - DESTACADA Y GRANDE -->
+            <div class="text-center mb-8 relative" id="tarjeta-qr">
+                <!-- Marco decorativo para el QR -->
+                <div class="inline-block relative">
+                    <!-- Brillo animado detrás del QR -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-[#9C7A2E]/10 via-transparent to-[#0a285e]/10 rounded-3xl blur-2xl animate-pulse-slow"
+                    >
+                    </div>
+
+                    <!-- Contenedor del QR con efecto glassmorphism -->
+                    <div
+                        class="relative backdrop-blur-sm bg-white/40 rounded-3xl p-6 md:p-8 border-2 border-[#9C7A2E]/30 shadow-xl"
+                    >
+                        <!-- Brillo diagonal animado -->
+                        <div
+                            class="absolute top-0 left-0 w-full h-full overflow-hidden rounded-3xl"
+                        >
+                            <div
+                                class="qr-shine absolute top-0 -left-full w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"
+                            >
+                            </div>
+                        </div>
+
+                        <!-- Imagen del QR -->
+                        <div
+                            class="relative w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 mx-auto mb-4"
+                        >
+                            <img
+                                src="/imagenes/que.png"
+                                alt="Código QR para Galería de Fotos"
+                                class="w-full h-full object-contain rounded-2xl shadow-lg"
+                            />
+                        </div>
+
+                        <!-- Texto instructivo -->
+                        <div class="space-y-2">
+                            <p
+                                class="font-charm text-[#0a285e] text-xl md:text-2xl lg:text-3xl font-semibold"
+                            >
+                                Escanea el código
+                            </p>
+                            <p
+                                class="text-[#0a285e]/70 text-sm md:text-base lg:text-lg"
+                            >
+                                para subir tus fotos y ver las de otros
+                                invitados
+                            </p>
+                        </div>
+
+                        <!-- Decoración: pequeñas esquinas doradas -->
+                        <div
+                            class="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-[#9C7A2E]/40 rounded-tl-lg"
+                        >
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 w-6 h-6 border-t-2 border-r-2 border-[#9C7A2E]/40 rounded-tr-lg"
+                        >
+                        </div>
+                        <div
+                            class="absolute bottom-4 left-4 w-6 h-6 border-b-2 border-l-2 border-[#9C7A2E]/40 rounded-bl-lg"
+                        >
+                        </div>
+                        <div
+                            class="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-[#9C7A2E]/40 rounded-br-lg"
+                        >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HOJAS Y FLORES CON MOVIMIENTO NATURAL -->
+
+    <!-- Hoja dorada izquierda -->
+    <img
+        src="/imagenes/hojadorada.png"
+        alt="hoja dorada"
+        class="absolute left-0 top-8 md:top-24 w-18 h-18 md:w-28 md:h-28 opacity-0 pointer-events-none z-10"
+        id="hoja-galeria-left"
+    />
+
+    <!-- Hoja dorada derecha -->
+    <img
+        src="/imagenes/hojadorada.png"
+        alt="hoja dorada"
+        class="absolute right-0 top-8 md:top-24 w-18 h-18 md:w-28 md:h-28 opacity-0 pointer-events-none z-10 scale-x-[-1]"
+        id="hoja-galeria-right"
+    />
+
+    <!-- Flor lateral izquierda -->
+    <img
+        src="/imagenes/florlateral.png"
+        alt="hojas"
+        class="absolute left-0 top-12 md:top-24 w-18 h-18 md:w-28 md:h-28 opacity-0 pointer-events-none z-[11]"
+        id="flor-galeria-left"
+    />
+
+    <!-- Flor lateral derecha -->
+    <img
+        src="/imagenes/florlateral.png"
+        alt="hojas"
+        class="absolute right-0 top-12 md:top-24 w-18 h-18 md:w-28 md:h-28 opacity-0 pointer-events-none z-[11] scale-x-[-1]"
+        id="flor-galeria-right"
+    />
+</section>
+
+<!-- ESTILOS PERSONALIZADOS -->
+<style>
+    /* Partículas flotantes doradas */
+    .particula-dorada {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: radial-gradient(circle, #9c7a2e 0%, transparent 70%);
+        border-radius: 50%;
+        animation: flotar 6s ease-in-out infinite;
+        opacity: 0.4;
+    }
+
+    @keyframes flotar {
+        0%,
+        100% {
+            transform: translateY(0) translateX(0);
+            opacity: 0.2;
+        }
+        50% {
+            transform: translateY(-30px) translateX(15px);
+            opacity: 0.6;
+        }
+    }
+
+    /* Animación de pulso lento */
+    @keyframes pulse-slow {
+        0%,
+        100% {
+            opacity: 0.4;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.6;
+            transform: scale(1.05);
+        }
+    }
+
+    .animate-pulse-slow {
+        animation: pulse-slow 4s ease-in-out infinite;
+    }
+
+    /* Efecto de brillo en QR al hacer hover */
+    .qr-shine {
+        transition: transform 0.7s ease;
+    }
+
+    #tarjeta-qr:hover .qr-shine {
+        transform: translateX(200%);
+        opacity: 1;
+    }
+
+    /* Animación suave del icono de cámara */
+    .camera-icon-container:hover svg {
+        animation: bounce-gentle 0.6s ease;
+    }
+
+    @keyframes bounce-gentle {
+        0%,
+        100% {
+            transform: translateY(0) scale(1);
+        }
+        50% {
+            transform: translateY(-8px) scale(1.05);
+        }
+    }
+
+    /* Animación de entrada para las fotos */
+    .foto-item {
+        opacity: 0;
+        animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .foto-item:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+    .foto-item:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+    .foto-item:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+    .foto-item:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+    .foto-item:nth-child(5) {
+        animation-delay: 0.5s;
+    }
+    .foto-item:nth-child(6) {
+        animation-delay: 0.6s;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<!-- ANIMACIONES CON GSAP -->
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const initGaleria = () => {
+        console.log("📸 Iniciando sección de galería...");
+
+        // ESTADO INICIAL
+        gsap.set("#contenedor-galeria", {
+            opacity: 0,
+            y: 50,
+            scale: 0.95,
+        });
+
+        // Flores laterales - Estado inicial
+        gsap.set("#flor-galeria-left", {
+            opacity: 0,
+            x: -40,
+            rotation: -8,
+            scale: 0.9,
+        });
+
+        gsap.set("#flor-galeria-right", {
+            opacity: 0,
+            x: 40,
+            rotation: 8,
+            scaleX: -0.9,
+            scaleY: 0.9,
+        });
+
+        // Hojas doradas - Estado inicial
+        gsap.set("#hoja-galeria-left", {
+            opacity: 0,
+            scale: 0,
+            rotation: -6,
+            transformOrigin: "bottom center",
+        });
+
+        gsap.set("#hoja-galeria-right", {
+            opacity: 0,
+            scaleX: 0,
+            scaleY: 0,
+            rotation: 6,
+            transformOrigin: "bottom center",
+        });
+
+        gsap.set("#tarjeta-galeria", { opacity: 0, y: 20 });
+        gsap.set("#tarjeta-qr", { opacity: 0, y: 30, scale: 0.95 });
+        gsap.set("#grid-fotos", { opacity: 0, y: 30 });
+        gsap.set("#texto-inferior-galeria", { opacity: 0, y: 20 });
+
+        // ANIMACIÓN PRINCIPAL
+        ScrollTrigger.create({
+            trigger: "#contenedor-galeria",
+            start: "top 75%",
+            end: "top 20%",
+
+            onEnter: () => {
+                const tl = gsap.timeline();
+
+                tl.to(
+                    "#contenedor-galeria",
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 1.6,
+                        ease: "power3.out",
+                    },
+                    0,
+                )
+
+                    // FLORES LATERALES
+                    .to(
+                        "#flor-galeria-left",
+                        {
+                            opacity: 0.75,
+                            x: 0,
+                            rotation: -3,
+                            scale: 1,
+                            duration: 2.8,
+                            ease: "sine.out",
+                        },
+                        0,
+                    )
+
+                    .to(
+                        "#flor-galeria-right",
+                        {
+                            opacity: 0.75,
+                            x: 0,
+                            rotation: 3,
+                            scaleX: -1,
+                            scaleY: 1,
+                            duration: 2.8,
+                            ease: "sine.out",
+                        },
+                        0.05,
+                    )
+
+                    // HOJAS DORADAS
+                    .to(
+                        "#hoja-galeria-left",
+                        {
+                            opacity: 0.7,
+                            scale: 0.9,
+                            rotation: -3,
+                            duration: 2.2,
+                            ease: "sine.out",
+                        },
+                        0.1,
+                    )
+
+                    .to(
+                        "#hoja-galeria-right",
+                        {
+                            opacity: 0.7,
+                            scaleX: -0.9,
+                            scaleY: 0.9,
+                            rotation: 3,
+                            duration: 2.2,
+                            ease: "sine.out",
+                        },
+                        0.15,
+                    )
+
+                    // Contenido
+                    .to(
+                        "#tarjeta-galeria",
+                        {
+                            opacity: 1,
+                            y: 0,
+                            duration: 1,
+                            ease: "power2.out",
+                        },
+                        0.8,
+                    )
+
+                    .to(
+                        "#tarjeta-qr",
+                        {
+                            opacity: 1,
+                            y: 0,
+                            scale: 1,
+                            duration: 1,
+                            ease: "back.out(1.4)",
+                        },
+                        1.1,
+                    )
+
+                    .to(
+                        "#grid-fotos",
+                        {
+                            opacity: 1,
+                            y: 0,
+                            duration: 1,
+                            ease: "power2.out",
+                        },
+                        1.4,
+                    )
+
+                    .to(
+                        "#texto-inferior-galeria",
+                        {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.8,
+                            ease: "power2.out",
+                        },
+                        1.6,
+                    );
+
+                // MOVIMIENTOS CONTINUOS
+                gsap.to("#flor-galeria-left", {
+                    y: -15,
+                    x: -8,
+                    rotation: -12,
+                    duration: 3,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: 3,
+                });
+
+                gsap.to("#flor-galeria-right", {
+                    y: -12,
+                    x: 8,
+                    rotation: 12,
+                    duration: 3.3,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: 3.2,
+                });
+
+                gsap.to("#hoja-galeria-left", {
+                    y: -18,
+                    rotation: -15,
+                    duration: 3.5,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: 3.3,
+                });
+
+                gsap.to("#hoja-galeria-right", {
+                    y: -16,
+                    rotation: 15,
+                    duration: 3.8,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: 3.5,
+                });
+
+                gsap.to("#hoja-galeria-left", {
+                    scale: 0.8,
+                    duration: 4,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: 4,
+                });
+
+                gsap.to("#hoja-galeria-right", {
+                    scaleX: -0.8,
+                    scaleY: 0.8,
+                    duration: 4.5,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: 4.3,
+                });
+
+                gsap.to("#flor-galeria-left", {
+                    x: -12,
+                    duration: 5,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: 4.5,
+                });
+
+                gsap.to("#flor-galeria-right", {
+                    x: 12,
+                    duration: 5.5,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: 4.8,
+                });
+            },
+
+            onLeaveBack: () => {
+                gsap.killTweensOf("#flor-galeria-left");
+                gsap.killTweensOf("#flor-galeria-right");
+                gsap.killTweensOf("#hoja-galeria-left");
+                gsap.killTweensOf("#hoja-galeria-right");
+
+                const tl = gsap.timeline();
+
+                tl.to(
+                    "#texto-inferior-galeria, #grid-fotos, #tarjeta-qr, #tarjeta-galeria",
+                    {
+                        opacity: 0,
+                        y: 20,
+                        duration: 0.3,
+                        stagger: 0.05,
+                        ease: "power2.in",
+                    },
+                )
+
+                    .to(
+                        "#contenedor-galeria",
+                        {
+                            opacity: 0,
+                            y: 50,
+                            scale: 0.95,
+                            duration: 0.5,
+                            ease: "power2.in",
+                        },
+                        "<",
+                    )
+
+                    .to(
+                        "#flor-galeria-left",
+                        {
+                            opacity: 0,
+                            x: -40,
+                            duration: 1,
+                            ease: "sine.in",
+                        },
+                        "<",
+                    )
+
+                    .to(
+                        "#flor-galeria-right",
+                        {
+                            opacity: 0,
+                            x: 40,
+                            duration: 1,
+                            ease: "sine.in",
+                        },
+                        "<",
+                    )
+
+                    .to(
+                        "#hoja-galeria-left, #hoja-galeria-right",
+                        {
+                            opacity: 0,
+                            scale: 0,
+                            duration: 0.8,
+                            ease: "sine.in",
+                        },
+                        "<",
+                    );
+            },
+        });
+
+        console.log("📸✨ Sección de galería activada!");
+    };
+
+    document.addEventListener("DOMContentLoaded", initGaleria);
+    document.addEventListener("astro:page-load", initGaleria);
+</script>
